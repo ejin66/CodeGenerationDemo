@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      demo2|test_metadata:
+        enabled: true
+
+builders:
+  test_metadata:
+    import: "package:demo2/test.dart"
+    builder_factories: ["testBuilder"]
+    build_extensions: {".dart": ["test_metadata.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
